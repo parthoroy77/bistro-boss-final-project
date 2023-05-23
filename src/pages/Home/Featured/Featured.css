@@ -1,0 +1,7 @@
+.featured-item{
+    background-image: url(../../../assets/home/featured.jpg), linear-gradient(100deg, rgba(21, 21, 21, 0.7), rgba(21, 21, 21, 0.7));
+    background-position: center;
+    background-blend-mode: multiply;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
