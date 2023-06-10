@@ -4,6 +4,7 @@ import useCart from '../../../hooks/useCart';
 import { Helmet } from 'react-helmet-async';
 import { FaTrash, FaTrashAlt } from 'react-icons/fa';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 const MyCart = () => {
     const [cart, refetch] = useCart()
@@ -47,7 +48,9 @@ const MyCart = () => {
                 <div className='flex uppercase items-center font-semibold my-3 text-xl  gap-6'>
                     <h3>Total Orders: {cart.length}</h3>
                     <h3>Total Price : {total}</h3>
-                    <button className='btn bg-[#D1A054] hover:bg-[#D1A054] border-0 hover:bg-opacity-80 '>PAY</button>
+                    <Link to='/dashboard/payment'>
+                        <button disabled={total === 0 ? true : false} className='btn bg-[#D1A054] hover:bg-[#D1A054] border-0 hover:bg-opacity-80 '>PAY</button>
+                    </Link>
                 </div>
                 <div>
                     <div className="overflow-x-auto ">

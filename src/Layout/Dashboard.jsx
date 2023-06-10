@@ -54,7 +54,7 @@ const Dashboard = () => {
                                         <Link><FaCalendar /> Reservation</Link>
                                     </li>
                                     <li>
-                                        <Link><FaWallet /> Payment</Link>
+                                        <Link to='/dashboard/payment'><FaWallet /> Payment</Link>
                                     </li>
                                     <li>
                                         <Link to='/dashboard/mycart'><FaShoppingCart /> My Cart </Link>
