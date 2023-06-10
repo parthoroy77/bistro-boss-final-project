@@ -7,9 +7,10 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {FaFacebook, FaGoogle, FaGithub} from 'react-icons/fa'
 import { Helmet } from 'react-helmet-async';
 import { toast } from 'react-hot-toast';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 const Login = () => {
     const [disable, setDisable] = useState(true)
-    const { loginUser } = useContext(AuthContext);
+    const { loginUser, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate()
     const location = useLocation();
     const from = location.state?.from?.pathname || '/';
@@ -43,7 +44,7 @@ const Login = () => {
     return (
         <div className='login-container'>
             <Helmet>
-                <title>Bistro | Sign Up</title>
+                <title>Bistro | Login</title>
             </Helmet>
             <div className="hero min-h-screen">
                 <div className="hero-content flex-col lg:flex-row gap-12">
@@ -74,8 +75,9 @@ const Login = () => {
                                 </label>
                                 <input onChange={handleValidateCaptcha} type="text" name='captcha' placeholder="Type The Text Above" className="input input-bordered" />
                             </div>
+                            {/* TODO: captcha */}
                             <div className="form-control mt-6">
-                                <input disabled={disable} value='Login' type='submit' className="btn bg-[#D1A054] border-0 hover:bg-[#D1A054] hover:bg-opacity-70" />
+                                <input disabled={false} value='Login' type='submit' className="btn bg-[#D1A054] border-0 hover:bg-[#D1A054] hover:bg-opacity-70" />
                             </div>
                         </form>
                         <div className='text-center space-y-3 my-7'>
@@ -83,18 +85,8 @@ const Login = () => {
                                 <p className='label-text-alt text-[#D1A054] text-[14px] font-bold link link-hover'>New here? Create a New Account</p>
                             </Link>
                             <p className='text-[14px]'>Or sign in with</p>
-                            <div className='flex justify-center gap-6'>
-                                <button className='btn-outline btn rounded-full'>
-                                    <FaFacebook className='text-xl'></FaFacebook>
-                                </button>
-                                <button className='btn-outline btn rounded-full'>
-                                    <FaGoogle className='text-xl'></FaGoogle>
-                                </button>
-                                <button className='btn-outline btn rounded-full'>
-                                    <FaGithub className='text-xl'></FaGithub>
-                                </button>
-                            </div>
                         </div>
+                        <SocialLogin></SocialLogin>
                     </div>
                 </div>
             </div>

@@ -50,8 +50,8 @@ const MyCart = () => {
                     <button className='btn bg-[#D1A054] hover:bg-[#D1A054] border-0 hover:bg-opacity-80 '>PAY</button>
                 </div>
                 <div>
-                    <div className="overflow-x-auto">
-                        <table className="table">
+                    <div className="overflow-x-auto ">
+                        <table className="table w-[400px] lg:w-[800px]">
                             {/* head */}
                             <thead>
                                 <tr>

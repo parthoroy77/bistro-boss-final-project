@@ -6,18 +6,29 @@ import { useForm } from 'react-hook-form';
 import { Helmet } from 'react-helmet-async';
 import { AuthContext } from '../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 const SignUp = () => {
     const { register, handleSubmit, formState: { errors }, reset } = useForm();
-    const { createUser, profileUpdate, logOut } = useContext(AuthContext);
+    const { createUser, profileUpdate, logOut, googleLogin } = useContext(AuthContext);
     const navigate = useNavigate()
     const onSubmit = data => {
         createUser(data.email, data.password).then(result => {
             const createdUser = result.user;
             profileUpdate(data.name, data.photo).then(result => {
-                reset()
-                logOut().then(result => {navigate('/login')}).catch(err => {})
-            }).catch(err => {})
-            toast.success('User Create Successfully')
+                const savedUser = { name: data.name, email: data.email }
+                fetch(`http://localhost:5000/users`, {
+                    method: 'POST',
+                    headers: { 'content-type': 'application/json' },
+                    body: JSON.stringify(savedUser)
+                }).then(res => res.json()).then(data => {
+                    if (data.insertedId) {
+                        reset()
+                        navigate('/')
+                        // logOut().then(result => { navigate('/login') }).catch(err => { })
+                        toast.success('User Create Successfully')
+                    }
+                })
+            }).catch(err => { })
         }).catch(err => toast.error(err.message))
     };
     return (
@@ -76,17 +87,7 @@ const SignUp = () => {
                                 <p className='label-text-alt text-[#D1A054] text-[14px] font-bold link link-hover'>Already registered? Go to log in</p>
                             </Link>
                             <p className='text-[14px]'>Or sign in with</p>
-                            <div className='flex justify-center gap-6'>
-                                <button className='btn-outline btn rounded-full'>
-                                    <FaFacebook className='text-xl'></FaFacebook>
-                                </button>
-                                <button className='btn-outline btn rounded-full'>
-                                    <FaGoogle className='text-xl'></FaGoogle>
-                                </button>
-                                <button className='btn-outline btn rounded-full'>
-                                    <FaGithub className='text-xl'></FaGithub>
-                                </button>
-                            </div>
+                            <SocialLogin></SocialLogin>
                         </div>
                     </div>
                 </div>
