@@ -14,7 +14,7 @@ const Dashboard = () => {
             </Helmet>
             <div className="drawer lg:drawer-mobile">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
-                <div className="drawer-content flex flex-col ">
+                <div className="drawer-content ">
                     {/* Page content here */}
                     <Outlet></Outlet>
                     <label htmlFor="my-drawer-2" className="btn btn-primary drawer-button lg:hidden">Open drawer</label>
@@ -34,10 +34,10 @@ const Dashboard = () => {
                                         <Link><FaHome /> Admin Home</Link>
                                     </li>
                                     <li>
-                                        <Link><FaUtensils /> Add Items</Link>
+                                        <Link to='/dashboard/addItem'><FaUtensils />Add An Item</Link>
                                     </li>
                                     <li>
-                                        <Link><FaBars /> Manage Items</Link>
+                                        <Link to='/dashboard/manageItems'><FaBars /> Manage Items</Link>
                                     </li>
                                     <li>
                                         <Link><FaBook /> Manage Bookings</Link>
