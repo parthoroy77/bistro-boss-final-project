@@ -31,7 +31,7 @@ const Dashboard = () => {
                             isAdmin
                                 ? <>
                                     <li>
-                                        <Link><FaHome /> Admin Home</Link>
+                                        <Link to='/dashboard/adminhome'><FaHome /> Admin Home</Link>
                                     </li>
                                     <li>
                                         <Link to='/dashboard/addItem'><FaUtensils />Add An Item</Link>
@@ -48,7 +48,7 @@ const Dashboard = () => {
                                 </>
                                 : <>
                                     <li>
-                                        <Link><FaHome /> User Home</Link>
+                                        <Link to='/dashboard/userhome'><FaHome /> User Home</Link>
                                     </li>
                                     <li>
                                         <Link><FaCalendar /> Reservation</Link>

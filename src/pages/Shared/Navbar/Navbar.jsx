@@ -4,7 +4,10 @@ import { AuthContext } from '../../../Providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 import {FaShoppingCart} from 'react-icons/fa'
 import useCart from '../../../hooks/useCart';
+import useAdmin from '../../../hooks/useAdmin';
+
 const Navbar = () => {
+    const [isAdmin] = useAdmin()
     const { user, logOut } = useContext(AuthContext);
     const [cart, refetch] = useCart();
     const handleLogOut = () => {
@@ -26,7 +29,7 @@ const Navbar = () => {
                 </button>
             </Link>
         </li>
-        <li><Link to='/dashboard'>Dashboard</Link></li>
+        <li><Link to={isAdmin ? '/dashboard/adminhome' : '/dashboard/userhome'}>Dashboard</Link></li>
         {
             user ? <>
                 <li><button onClick={handleLogOut} className='btn btn-ghost'>Log Out</button></li>
