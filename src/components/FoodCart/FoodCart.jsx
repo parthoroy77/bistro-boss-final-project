@@ -12,8 +12,8 @@ const FoodCart = ({ item }) => {
     const location = useLocation()
     const handleAddToCart = menuItem => {
         if (user && user.email) {
-            const cartItem = {foodId: _id,name, image, price, email: user.email}
-            fetch(`http://localhost:5000/carts`, {
+            const cartItem = { foodId: _id, name, image, price, email: user.email }
+            fetch(`https://bistro-boss-final-project-server.vercel.app/carts`, {
                 method: 'POST',
                 headers: { 'content-type': 'application/json' },
                 body: JSON.stringify(cartItem)
@@ -26,7 +26,7 @@ const FoodCart = ({ item }) => {
         }
         else {
             toast.error('Please Login First');
-            navigate('/login', {state: {from: location} })
+            navigate('/login', { state: { from: location } })
         }
     }
     return (
@@ -36,7 +36,7 @@ const FoodCart = ({ item }) => {
             <div className="card-body items-center text-center">
                 <h2 className="card-title">{name}</h2>
                 <p>Lettuce, Eggs, Parmesan Cheese, Chicken Breast Fillets.</p>
-                <button onClick={()=>handleAddToCart(item)} className='uppercase btn btn-outline bg-[#E8E8E8] w-1/2 mx-auto border-0 border-b-4 border-[#BB8506] hover:bg-black hover:border-black hover:text-[#BB8506]'>Add To cart</button>
+                <button onClick={() => handleAddToCart(item)} className='uppercase btn btn-outline bg-[#E8E8E8] w-1/2 mx-auto border-0 border-b-4 border-[#BB8506] hover:bg-black hover:border-black hover:text-[#BB8506]'>Add To cart</button>
             </div>
         </div>
     );

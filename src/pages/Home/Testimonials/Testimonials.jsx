@@ -6,12 +6,12 @@ import "swiper/css/navigation";
 import { Navigation } from "swiper";
 import { Rating } from '@smastrom/react-rating';
 import '@smastrom/react-rating/style.css'
-import {FaQuoteLeft} from 'react-icons/fa'
+import { FaQuoteLeft } from 'react-icons/fa'
 const Testimonials = () => {
     const [reviews, setReviews] = useState([]);
     useEffect(() => {
-        fetch('http://localhost:5000/reviews').then(res=> res.json()).then(data => setReviews(data))
-    },[])
+        fetch('https://bistro-boss-final-project-server.vercel.app/reviews').then(res => res.json()).then(data => setReviews(data))
+    }, [])
     return (
         <div className='my-16'>
             <SectionTitle heading='Testimonial' subHeading='What Our Client Say'></SectionTitle>
@@ -24,7 +24,7 @@ const Testimonials = () => {
                                 value={review.ratings}
                                 readOnly
                             />
-                            <FaQuoteLeft className='text-7xl mt-5'/>
+                            <FaQuoteLeft className='text-7xl mt-5' />
                             <p className='py-6'>{review.details}</p>
                             <h2 className='text-2xl text-orange-400'>{review.name}</h2>
                         </div>

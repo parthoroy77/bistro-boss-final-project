@@ -7,11 +7,11 @@ import useAuth from "./useAuth";
 const useCart = () => {
     const { user, loading } = useAuth();
     const [axiosSecure] = useAxiosSecure();
-    const { isLoading, refetch ,data : cart = []} = useQuery({
+    const { isLoading, refetch, data: cart = [] } = useQuery({
         queryKey: ['carts', user?.email],
         enabled: !loading,
         // queryFn: async () => {
-        //     const res = await fetch(`http://localhost:5000/carts?email=${user?.email}`)
+        //     const res = await fetch(`https://bistro-boss-final-project-server.vercel.app/carts?email=${user?.email}`)
         //     return res.json()
         // }
         queryFn: async () => {

@@ -16,7 +16,7 @@ const SignUp = () => {
             const createdUser = result.user;
             profileUpdate(data.name, data.photo).then(result => {
                 const savedUser = { name: data.name, email: data.email }
-                fetch(`http://localhost:5000/users`, {
+                fetch(`https://bistro-boss-final-project-server.vercel.app/users`, {
                     method: 'POST',
                     headers: { 'content-type': 'application/json' },
                     body: JSON.stringify(savedUser)

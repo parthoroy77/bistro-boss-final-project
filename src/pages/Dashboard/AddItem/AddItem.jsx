@@ -13,6 +13,7 @@ const AddItem = () => {
     const onSubmit = data => {
         const formData = new FormData();
         formData.append('image', data.image[0]);
+        console.log(formData);
         fetch(hostingURL, {
             method: 'POST',
             body: formData
